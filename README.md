@@ -9,3 +9,6 @@ secrets = {
     'babel_net_key': <clave_propia_para_babel_net>
 }
 ```
+
+Dependencias:
+- requests==2.25.1
