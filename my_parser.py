@@ -1,4 +1,3 @@
-import requests
 import abc
 
 class MyParser(metaclass=abc.ABCMeta):

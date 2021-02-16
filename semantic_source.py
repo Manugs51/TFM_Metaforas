@@ -1,5 +1,4 @@
 import abc
-import requests
 
 class SemanticSource(metaclass=abc.ABCMeta):
     
