@@ -1,5 +1,6 @@
 from secrets import secrets
-from babel import Babel
+from babel_categories import BabelCategories
+from babel_lemmas_of_senses import BabelLemmasOfSenses
 from babel_parser import BabelParser
 
 
@@ -12,11 +13,11 @@ def show_metaphors(text:str) -> None:
     pass
 
 if __name__ == '__main__':
-    source = Babel(secrets['babel_key'])
+    source = BabelLemmasOfSenses(secrets['babel_key'])
     parser = BabelParser(secrets['babel_key'])
     while True:
         text = get_text()
         parsed_text = parser.parse(text)
         print(parsed_text)
-        metaphors_found = source.find_metaphors_like_TFG(parsed_text)
+        metaphors_found = source.find_metaphors(parsed_text)
         show_metaphors(metaphors_found)

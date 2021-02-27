@@ -6,12 +6,15 @@ import tags
 
 class BabelParser(MyParser):
     def __init__(self, key: str):
-        self.complete_url = api['disambiguate_url'] + '?key=' + key + '&' + api['español'] + '&text='
+        key_part = '?key=' + key
+        lang_part = '&' + api['spanish']
+        incomplete_text_part = '&text='
+        self.complete_url = api['disambiguate_url'] + key_part + lang_part + incomplete_text_part
     
     def parse(self, text: str) -> [(str, str)]:
         r = requests.get(self.complete_url+text)
-        # For synsets in jason return the word (start->end) + type of word (last char of sysnsetID)
+        # For synsets in json return the word (start->end) + sysnsetID
         return [
                 (text[elem['charFragment']['start'] : elem['charFragment']['end']+1],
-                tags.BABEL[elem['babelSynsetID'][-1]])
+                elem['babelSynsetID'])
             for elem in r.json()]
