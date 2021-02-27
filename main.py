@@ -18,5 +18,5 @@ if __name__ == '__main__':
         text = get_text()
         parsed_text = parser.parse(text)
         print(parsed_text)
-        metaphors_found = source.find_metaphors(parsed_text)
+        metaphors_found = source.find_metaphors_like_TFG(parsed_text)
         show_metaphors(metaphors_found)
