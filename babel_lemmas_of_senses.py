@@ -15,7 +15,8 @@ class BabelLemmasOfSenses(SemanticSource):
         synsets_of_words_response = [requests.get(self.complete_url+w[0]).json() for w in words]
         #list of lists of ids
         #print([list(map(lambda elem : elem['properties']['simpleLemma'], s)) for s in synsets_of_words_response])
-        synsets_of_words = [list(map(lambda elem : elem['properties']['simpleLemma'], s)) for s in synsets_of_words_response]
+        synsets_of_words = [list(map(lambda elem : elem['properties']['simpleLemma'], s)) 
+                            for s in synsets_of_words_response]
         #TODO refactor
         noun1 = sorted(synsets_of_words[0])
         print(noun1)

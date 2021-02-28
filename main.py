@@ -13,11 +13,11 @@ def show_metaphors(text:str) -> None:
     pass
 
 if __name__ == '__main__':
-    source = BabelLemmasOfSenses(secrets['babel_key'])
+    source = BabelCategories(secrets['babel_key'])
     parser = BabelParser(secrets['babel_key'])
     while True:
         text = get_text()
-        parsed_text = parser.parse(text)
-        print(parsed_text)
-        metaphors_found = source.find_metaphors(parsed_text)
+        word_and_id = parser.parse(text)
+        print(word_and_id)
+        metaphors_found = source.find_metaphors(word_and_id)
         show_metaphors(metaphors_found)
