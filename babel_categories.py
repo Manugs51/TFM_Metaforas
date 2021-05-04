@@ -27,3 +27,6 @@ class BabelCategories(SemanticSource):
                 ret = 'no hay metáfora'
                 print(c)
         return ret
+
+    def toString(self) -> str:
+        return 'babel_categories'

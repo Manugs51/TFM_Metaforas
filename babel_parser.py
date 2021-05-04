@@ -18,3 +18,6 @@ class BabelParser(MyParser):
                 (text[elem['charFragment']['start'] : elem['charFragment']['end']+1],
                 elem['babelSynsetID'])
             for elem in r.json()]
+    
+    def toString() -> str:
+        return 'babel_parser'

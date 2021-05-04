@@ -29,3 +29,6 @@ class BabelLemmasOfSenses(SemanticSource):
                 print(syn)
         print(ret)
         return ret
+
+    def toString(self) -> str:
+        return 'babel_senses'

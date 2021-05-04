@@ -27,3 +27,6 @@ class BabelHypernyms(SemanticSource):
                 ret = 'no hay metáfora'
                 print(h)
         return ret
+
+    def toString(self) -> str:
+        return 'babel_hypernyms'

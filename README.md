@@ -12,3 +12,4 @@ secrets = {
 
 Dependencias:
 - requests==2.25.1
+- flask==1.1.2
