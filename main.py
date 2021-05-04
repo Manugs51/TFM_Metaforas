@@ -1,5 +1,6 @@
 from secrets import secrets
 from babel_categories import BabelCategories
+from babel_hypernyms import BabelHypernyms
 from babel_lemmas_of_senses import BabelLemmasOfSenses
 from babel_parser import BabelParser
 
@@ -13,7 +14,7 @@ def show_metaphors(text:str) -> None:
     pass
 
 if __name__ == '__main__':
-    source = BabelCategories(secrets['babel_key'])
+    source = BabelHypernyms(secrets['babel_key'])
     parser = BabelParser(secrets['babel_key'])
     while True:
         text = get_text()

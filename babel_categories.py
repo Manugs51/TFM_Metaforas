@@ -9,7 +9,6 @@ class BabelCategories(SemanticSource):
         incomplete_synset_part = '&id='
         self.complete_url = api['information_given_synset_url'] + key_part + incomplete_synset_part
 
-    #TODO this does not take @words
     def find_metaphors(self, words: [(str, str)]) -> str:
         #list of jsons containing categories
         info_of_synsets_response = [requests.get(self.complete_url+w[1]).json() for w in words]
