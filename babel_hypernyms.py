@@ -9,7 +9,7 @@ class BabelHypernyms(SemanticSource):
         incomplete_synset_part = '&id='
         self.complete_url = api['edges_given_synset_url'] + key_part + incomplete_synset_part
     
-    def x_in_hyps_of_y(self, x:str, y:str, already_checked:set) -> str:
+    def x_in_hyps_of_y(self, x:str, y:str, depth:int) -> str:
         edges_of_y = requests.get(self.complete_url+y).json()
 
         hyps_of_y = list(filter(lambda elem : elem['pointer']['relationGroup'] == 'HYPERNYM', edges_of_y))
@@ -19,16 +19,24 @@ class BabelHypernyms(SemanticSource):
         print('COMPROBANDO ID: ', y)
         print(ids_of_hyps_of_y)
 
-        ret = 'hay metáfora'
+        ret = {
+            'isMetaphor': True,
+            'relation': [],
+        }
 
         if x in ids_of_hyps_of_y: # perro es animal
-            ret = 'no hay metáfora'
+            ret['isMetaphor'] = False
+            ret['relation'].append(x)
         else:
             for id_of_hyp_of_y in ids_of_hyps_of_y:
-                if not id_of_hyp_of_y in already_checked:
-                    already_checked.add(id_of_hyp_of_y)
-                    if self.x_in_hyps_of_y(x, id_of_hyp_of_y, already_checked) == 'no hay metáfora': # perro es ser vivo (perro -> animal -> ser vivo)
-                        ret = 'no hay metáfora'
+                if depth < 4:
+                    #already_checked.add(id_of_hyp_of_y)
+                    ret_hyps = self.x_in_hyps_of_y(x, id_of_hyp_of_y, depth+1) # perro es ser vivo (perro -> animal -> ser vivo)
+                    if not ret_hyps['isMetaphor']:
+                        ret['relation'] = ret_hyps['relation']
+                        ret['relation'].append(id_of_hyp_of_y)
+                        ret['isMetaphor'] = False
+                        break
         
         return ret
 
@@ -37,15 +45,30 @@ class BabelHypernyms(SemanticSource):
     def find_metaphors(self, words: [(str, str)]) -> str:
         suj_word, suj_id = self.subject(words)
         atr_word, atr_id = self.attribute(words)
-        already_checked = set() #TODO también hace falta ponerle una profundidad máxima
+        already_checked = set() #TODO combinar con depth
 
-        if suj_id == atr_id: #TODO refactor de return
-            return 'no hay metafora'
+        if suj_id == atr_id:
+            return {
+                'isMetaphor': False,
+                'relation': [suj_id],
+                'reason': 'Tanto el sujeto como el atributo de la oración son la misma palabra'
+            }
         
-        ret = self.x_in_hyps_of_y(suj_id, atr_id, already_checked)
+        ret = self.x_in_hyps_of_y(suj_id, atr_id, 0)
         print('COMPROBANDO A LA INVERSA')
-        if ret == 'hay metáfora':
-            ret = self.x_in_hyps_of_y(atr_id, suj_id, already_checked)
+        if ret['isMetaphor']:
+            ret = self.x_in_hyps_of_y(atr_id, suj_id, 0)
+            if not ret['isMetaphor']:
+                ret['relation'].append(suj_id)
+        else:
+            ret['relation'].append(atr_id)
+
+        if ret['isMetaphor']:
+            ret['reason'] = 'Sujeto (' + suj_id + ') y atributo (' + atr_id + ') no tienen relación de hiperonimia'
+        else:
+            ret['reason'] = 'Existe una relación de hiperonimia'
+            for id in reversed(ret['relation']):
+                ret['reason'] += ' -> ' + id
         
         return ret
 
