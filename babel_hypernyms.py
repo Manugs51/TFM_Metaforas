@@ -42,7 +42,7 @@ class BabelHypernyms(SemanticSource):
 
 
 
-    def find_metaphors(self, words: [(str, str)]) -> str:
+    def find_metaphors(self, words: [(str, str)]):
         suj_word, suj_id = self.subject(words)
         atr_word, atr_id = self.attribute(words)
         already_checked = set() #TODO combinar con depth

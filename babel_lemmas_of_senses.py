@@ -10,7 +10,7 @@ class BabelLemmasOfSenses(SemanticSource):
         incomplete_lemma_part = '&lemma='
         self.complete_url = api['senses_given_word_url'] + key_part + lang_part + incomplete_lemma_part
 
-    def find_metaphors(self, words: [(str, str)]) -> str:
+    def find_metaphors(self, words: [(str, str)]):
         suj_word, suj_id = self.subject(words)
         atr_word, atr_id = self.attribute(words)
 
