@@ -54,7 +54,7 @@ def get_text(args):
 
 @app.route('/api/v1/check', methods=['GET'])
 def api_v1_check():
-    
+
     #TODO comprobar si la API de babel no devuelve nada
 
     parser_key = choose_parser_key(request.args)
@@ -72,7 +72,7 @@ def api_v1_check():
         word_and_id = parser.parse(text)
     except:
         raise Exception('Hubo un problema analizando sintácticamente el texto')
-
+    
     metaphors_found = None
     try:
         metaphors_found = source.find_metaphors(word_and_id)
@@ -83,9 +83,9 @@ def api_v1_check():
         'text': text,
         'parser': parser.toString(),
         'mode': source.toString(),
-        'words_with_ids': word_and_id,
-        'isMetaphor': True if metaphors_found else False,
-        'metaphors': metaphors_found,
+        'relation': metaphors_found['relation'],
+        'isMetaphor': metaphors_found['isMetaphor'],
+        'reason': metaphors_found['reason'],
     }, 200, {'Access-Control-Allow-Origin': '*'}
 
 if __name__ == '__main__':
