@@ -37,7 +37,7 @@ class BabelCategories(SemanticSource):
             ret['reason'] = suj_word + ' y ' + atr_word + ' no tienen ninguna categoría en común: ' + \
                 str(category_names_of_suj) + ' y ' + str(category_names_of_atr)
         else:
-            ret['reason'] = suj_word + ' y ' + atr_word + 'comparten las categorías de:'
+            ret['reason'] = suj_word + ' y ' + atr_word + ' comparten las categorías de:'
             for c in ret['relation']:
                 ret['reason'] += ' ' + c + ','
             ret['reason'] = ret['reason'][:-1]
