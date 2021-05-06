@@ -1,5 +1,5 @@
 import flask
-from flask import request
+from flask import request, jsonify
 from secrets import secrets
 from babel_categories import BabelCategories
 from babel_hypernyms import BabelHypernyms
@@ -54,6 +54,8 @@ def get_text(args):
 
 @app.route('/api/v1/check', methods=['GET'])
 def api_v1_check():
+    
+    #TODO comprobar si la API de babel no devuelve nada
 
     parser_key = choose_parser_key(request.args)
 
@@ -76,7 +78,7 @@ def api_v1_check():
         metaphors_found = source.find_metaphors(word_and_id)
     except:
         raise Exception('Hubo un problema buscando la metáfora')
-    
+
     return {
         'text': text,
         'parser': parser.toString(),
@@ -84,7 +86,7 @@ def api_v1_check():
         'words_with_ids': word_and_id,
         'isMetaphor': True if metaphors_found else False,
         'metaphors': metaphors_found,
-    }
+    }, 200, {'Access-Control-Allow-Origin': '*'}
 
 if __name__ == '__main__':
     app.run()
