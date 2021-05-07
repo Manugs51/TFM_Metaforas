@@ -14,7 +14,7 @@ def show_metaphors(text:str) -> None:
     pass
 
 if __name__ == '__main__':
-    source = BabelHypernyms(secrets['babel_key'])
+    source = BabelLemmasOfSenses(secrets['babel_key'])
     parser = BabelParser(secrets['babel_key'])
     while True:
         text = get_text()
