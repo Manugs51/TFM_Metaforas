@@ -16,9 +16,9 @@ def home():
 
 def parse_mode(args, key):
     if not 'parser' in args: # Default
-        return BabelParser(secrets['babel_key'])
+        return BabelParser(key)
     elif args['parser'] == 'babel_parser':
-        return BabelParser(secrets['babel_key'])
+        return BabelParser(key)
     else:
         raise Exception('El parser elegido no existe')
 
