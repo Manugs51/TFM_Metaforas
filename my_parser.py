@@ -1,9 +1,11 @@
 import abc
+from typing import List, Tuple
+
 
 class MyParser(metaclass=abc.ABCMeta):
 
     @abc.abstractmethod
-    def parse(self, text: str) -> [(str, str)]:
+    def parse(self, text: str) -> List[Tuple[str, str]]:
         return None
 
     @abc.abstractmethod

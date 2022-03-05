@@ -56,28 +56,30 @@ def get_text(args):
 def api_v1_check():
 
     #TODO comprobar si la API de babel no devuelve nada
+    try:
+        parser_key = choose_parser_key(request.args)
 
-    parser_key = choose_parser_key(request.args)
+        source_key = choose_source_key(request.args)
 
-    source_key = choose_source_key(request.args)
+        parser = parse_mode(request.args, parser_key)
 
-    parser = parse_mode(request.args, parser_key)
+        source = source_mode(request.args, source_key)
 
-    source = source_mode(request.args, source_key)
-
-    text = get_text(request.args)
+        text = get_text(request.args)
+    except Exception as e:
+        return e, 500
 
     word_and_id = None 
     try:
         word_and_id = parser.parse(text)
     except:
-        raise Exception('Hubo un problema analizando sintácticamente el texto')
+        return 'Hubo un problema analizando sintácticamente el texto', 500
     
     metaphors_found = None
     try:
         metaphors_found = source.find_metaphors(word_and_id)
     except:
-        raise Exception('Hubo un problema buscando la metáfora')
+        return 'Hubo un problema buscando la metáfora', 500
 
     return {
         'text': text,

@@ -1,3 +1,4 @@
+from typing import List, Tuple
 from semantic_source import SemanticSource
 from babel_html_api import api
 import requests
@@ -42,7 +43,7 @@ class BabelHypernyms(SemanticSource):
 
 
 
-    def find_metaphors(self, words: [(str, str)]):
+    def find_metaphors(self, words: List[Tuple[str, str]]):
         suj_word, suj_id = self.subject(words)
         atr_word, atr_id = self.attribute(words)
         already_checked = set() #TODO combinar con depth

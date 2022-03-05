@@ -1,7 +1,7 @@
+from typing import List, Tuple
 from my_parser import MyParser
 from babel_html_api import api
 import requests
-import tags
 
 
 class BabelParser(MyParser):
@@ -12,7 +12,7 @@ class BabelParser(MyParser):
         self.complete_url = api['disambiguate_url'] + key_part + lang_part + incomplete_text_part
     
     #TODO: convertir a minusculas, babel tiene problemas con ES
-    def parse(self, text: str) -> [(str, str)]:
+    def parse(self, text: str) -> List[Tuple[str, str]]:
         r = requests.get(self.complete_url+text)
         # For synsets in json return the word (start->end) + sysnsetID
         return [
