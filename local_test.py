@@ -1,8 +1,8 @@
 from secrets import secrets
-from babel_categories import BabelCategories
-from babel_hypernyms import BabelHypernyms
-from babel_lemmas_of_senses import BabelLemmasOfSenses
-from babel_parser import BabelParser
+from semantic_source.babel_categories import BabelCategories
+from semantic_source.babel_hypernyms import BabelHypernyms
+from semantic_source.babel_lemmas_of_senses import BabelLemmasOfSenses
+from custom_parser.babel_parser import BabelParser
 
 
 

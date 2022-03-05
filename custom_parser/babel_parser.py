@@ -1,10 +1,10 @@
 from typing import List, Tuple
-from my_parser import MyParser
-from babel_html_api import api
+from links.babel_html_api import api
 import requests
+from custom_parser.abstract_parser import Parser
 
 
-class BabelParser(MyParser):
+class BabelParser(Parser):
     def __init__(self, key: str):
         key_part = '?key=' + key
         lang_part = '&' + api['spanish']

@@ -2,7 +2,7 @@ import abc
 from typing import List, Tuple
 
 
-class MyParser(metaclass=abc.ABCMeta):
+class Parser(metaclass=abc.ABCMeta):
 
     @abc.abstractmethod
     def parse(self, text: str) -> List[Tuple[str, str]]:

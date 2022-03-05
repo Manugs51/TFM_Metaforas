@@ -1,6 +1,6 @@
 from typing import List, Tuple
-from semantic_source import SemanticSource
-from babel_html_api import api
+from semantic_source.abstract_semantic_source import SemanticSource
+from links.babel_html_api import api
 import requests
 
 
