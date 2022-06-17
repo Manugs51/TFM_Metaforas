@@ -1,7 +1,7 @@
 from typing import List, Tuple
-from links.babel_html_api import api
+from links.babel_html_api import api # pylint: disable=import-error
 import requests
-from custom_parser.abstract_parser import Parser
+from custom_parser.abstract_parser import Parser # pylint: disable=import-error
 
 
 class BabelParser(Parser):

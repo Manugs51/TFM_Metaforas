@@ -5,6 +5,7 @@ from flask import request
 import flask
 from custom_parser.babel_parser import BabelParser
 from custom_parser.abstract_parser import Parser
+from custom_parser.spacy_parser import SpacyParser
 from semantic_source.abstract_semantic_source import SemanticSource
 from semantic_source.babel_categories import BabelCategories
 from semantic_source.babel_hypernyms import BabelHypernyms
@@ -29,6 +30,8 @@ def parse_mode(args, key) -> Parser:
         return BabelParser(key)
     elif args['parser'] == 'babel_parser':
         return BabelParser(key)
+    elif args['parser'] == 'spacy_parser':
+        return SpacyParser(key)
 
     raise Exception('El parser elegido no existe')
 

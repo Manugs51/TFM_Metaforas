@@ -13,3 +13,5 @@ secrets = {
 Dependencias:
 - requests==2.25.1
 - flask==1.1.2
+- spacy==3.3.1
+- python -m spacy download es_core_news_lg

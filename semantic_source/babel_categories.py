@@ -1,6 +1,6 @@
 from typing import List, Tuple
-from semantic_source.abstract_semantic_source import SemanticSource
-from links.babel_html_api import api
+from semantic_source.abstract_semantic_source import SemanticSource # pylint: disable=import-error
+from links.babel_html_api import api # pylint: disable=import-error
 import requests
 
 
@@ -36,7 +36,7 @@ class BabelCategories(SemanticSource):
         
         if ret['isMetaphor']:
             ret['reason'] = suj_word + ' y ' + atr_word + ' no tienen ninguna categoría en común: ' + \
-                str(category_names_of_suj) + ' y ' + str(category_names_of_atr)
+                str(category_names_of_suj) + ' y ' + str(category_names_of_atr) 
         else:
             ret['reason'] = suj_word + ' y ' + atr_word + ' comparten las categorías de:'
             for c in ret['relation']:
