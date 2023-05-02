@@ -1,0 +1,7 @@
+JCN:
+Correlation:  -0.07921997195276115
+Best threshold: 0.19
+Average accuracy across 5 folds: 0.5961766409539149
+Average precision across 5 folds: 0.5932398967996833
+Average recall across 5 folds: 0.9836567687910129
+Average F1-score across 5 folds: 0.7400490735478088
