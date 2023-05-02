@@ -2,7 +2,7 @@
  
 Funcionando en python 3.8.6
 
-Es necesario tener un archivo secrets.py conteniendo:
+Es necesario tener un archivo private_secrets.py conteniendo:
 
 ```python
 secrets = {

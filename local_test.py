@@ -1,4 +1,4 @@
-from secrets import secrets
+from private_secrets import secrets
 from semantic_source.babel_categories import BabelCategories
 from semantic_source.babel_hypernyms import BabelHypernyms
 from semantic_source.babel_lemmas_of_senses import BabelLemmasOfSenses

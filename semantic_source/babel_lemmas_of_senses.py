@@ -32,8 +32,8 @@ class BabelLemmasOfSenses(SemanticSource):
         #print(noun1)
         #noun2 = sorted(synsets_of_words[2])
         #print(noun2)
-        print(lemmas_of_senses_of_suj)
-        print(lemmas_of_senses_of_atr)
+        #print(lemmas_of_senses_of_suj)
+        #print(lemmas_of_senses_of_atr)
         
         ret = {
             'isMetaphor': True,

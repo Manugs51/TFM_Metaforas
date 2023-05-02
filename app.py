@@ -1,6 +1,6 @@
 """App base module"""
 
-from secrets import secrets
+from private_secrets import secrets
 from flask import request
 import flask
 from custom_parser.babel_parser import BabelParser
@@ -10,6 +10,14 @@ from semantic_source.abstract_semantic_source import SemanticSource
 from semantic_source.babel_categories import BabelCategories
 from semantic_source.babel_hypernyms import BabelHypernyms
 from semantic_source.babel_lemmas_of_senses import BabelLemmasOfSenses
+from semantic_source.sematch_jcn import SematchJcn
+from semantic_source.sematch_lch import SematchLch
+from semantic_source.sematch_li import SematchLi
+from semantic_source.sematch_lin import SematchLin
+from semantic_source.sematch_path import SematchPath
+from semantic_source.sematch_res import SematchRes
+from semantic_source.sematch_wpath import SematchWpath
+from semantic_source.sematch_wup import SematchWup
 
 
 app = flask.Flask(__name__)
@@ -46,6 +54,22 @@ def source_mode(args, key) -> SemanticSource:
         return BabelHypernyms(key)
     elif args['mode'] == 'babel_senses':
         return BabelLemmasOfSenses(key)
+    elif args['mode'] == 'sematch_jcn':
+        return SematchJcn()
+    elif args['mode'] == 'sematch_lch':
+        return SematchLch()
+    elif args['mode'] == 'sematch_li':
+        return SematchLi()
+    elif args['mode'] == 'sematch_lin':
+        return SematchLin()
+    elif args['mode'] == 'sematch_path':
+        return SematchPath()
+    elif args['mode'] == 'sematch_res':
+        return SematchRes()
+    elif args['mode'] == 'sematch_wpath':
+        return SematchWpath()
+    elif args['mode'] == 'sematch_wup':
+        return SematchWup()
 
     raise Exception('El método de comprobación elegido no existe')
 
