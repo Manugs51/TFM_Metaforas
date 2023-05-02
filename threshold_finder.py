@@ -24,17 +24,17 @@ corr_coef = np.corrcoef(score_num, relacion_spacy_jcn)[0][1]
 print(corr_coef)
 
 # Create a scatter plot
-#plt.scatter(relacion_spacy_jcn, score_num)
+plt.scatter(relacion_spacy_jcn, score_num)
 
 #sns.set(style="darkgrid")
 #sns.jointplot(x=relacion_spacy_jcn, y=score_num, kind="hex", color="blue")
 
-plt.hexbin(relacion_spacy_jcn, score_num, gridsize=20, cmap='viridis')
+#plt.hexbin(relacion_spacy_jcn, score_num, gridsize=5, cmap='viridis', vmax=100 )
 
 plt.xlabel('Relacion_spacy_jcn')
 plt.ylabel('Score_num')
 plt.title('Score_num vs Relacion_spacy_jcn')
-plt.colorbar(label='Density')
+#plt.colorbar(label='Density')
 plt.show()
 
 
