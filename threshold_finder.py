@@ -21,7 +21,7 @@ relacion_spacy_jcn = df['Relacion_spacy_jcn'].apply(lambda x: ast.literal_eval(x
 # Calculate the correlation coefficient
 corr_coef = np.corrcoef(score_num, relacion_spacy_jcn)[0][1]
 
-print(corr_coef)
+print("Correlation: ", corr_coef)
 
 # Create a scatter plot
 plt.scatter(relacion_spacy_jcn, score_num)
@@ -35,7 +35,7 @@ plt.xlabel('Relacion_spacy_jcn')
 plt.ylabel('Score_num')
 plt.title('Score_num vs Relacion_spacy_jcn')
 #plt.colorbar(label='Density')
-plt.show()
+#plt.show()
 
 
 # Prepare data for k-fold cross-validation
