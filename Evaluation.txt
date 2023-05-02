@@ -5,3 +5,68 @@ Average accuracy across 5 folds: 0.5961766409539149
 Average precision across 5 folds: 0.5932398967996833
 Average recall across 5 folds: 0.9836567687910129
 Average F1-score across 5 folds: 0.7400490735478088
+Comment: Most values between 0.04 and 0.4. Then lots on 0 and some on 1
+
+LCH:
+Correlation:  0.01104501602348573
+Best threshold: 1.0
+Average accuracy across 5 folds: 0.4962822468989291
+Average precision across 5 folds: 0.559729097586759
+Average recall across 5 folds: 0.6472263406320653
+Average F1-score across 5 folds: 0.600232531439991
+Comment: Most between 0.8 and 3. Then lots on 0 and some on 3.6
+
+Li:
+Correlation:  -0.06839675391492228
+Best threshold: 0.64
+Average accuracy across 5 folds: 0.5983014749512587
+Average precision across 5 folds: 0.5941277448118492
+Average recall across 5 folds: 0.9872859335350423
+Average F1-score across 5 folds: 0.7417683174144987
+Comment: Acumulaciones en 0 y 1
+
+Lin:
+Correlation:  -0.0624433423841653
+Best threshold: 0.64
+Average accuracy across 5 folds: 0.6004270153428838
+Average precision across 5 folds: 0.595639317565975
+Average recall across 5 folds: 0.985476626019803
+Average F1-score across 5 folds: 0.7424317403712507
+Comment: Acumulaciones en 0 y 1
+
+Path:
+Correlation:  -0.06337749357538638
+Best threshold: 0.25
+Average accuracy across 5 folds: 0.5972390579525868
+Average precision across 5 folds: 0.5936809372216061
+Average recall across 5 folds: 0.9854600161898981
+Average F1-score across 5 folds: 0.7409060205077027
+Comment: Acumulaciones en 0 y 1
+
+Res:
+Correlation:  -0.0626704870196789
+Best threshold: 0.81
+Average accuracy across 5 folds: 0.5334770845695233
+Average precision across 5 folds: 0.5752724341361597
+Average recall across 5 folds: 0.7708625511724145
+Average F1-score across 5 folds: 0.6588119991693138
+Comment: Capado a 20 porque se va a infinito, el valor más alto no infinito es 12.5. También saltos en 0
+
+Wpath:
+Correlation:  -0.05162712743261787
+Best threshold: 0.54
+Average accuracy across 5 folds: 0.5983011217541183
+Average precision across 5 folds: 0.5947493101278777
+Average recall across 5 folds: 0.9818393282777764
+Average F1-score across 5 folds: 0.7407068909973701
+Comment: Acumulaciones en 0 y 1
+
+Wup:
+Correlation:  -0.008450981280577181
+Best threshold: 0.83
+Average accuracy across 5 folds: 0.5972387047554463
+Average precision across 5 folds: 0.5936797292295306
+Average recall across 5 folds: 0.9854590174682617
+Average F1-score across 5 folds: 0.7409051535508946
+Comment: Mucho 0 y 1
+
