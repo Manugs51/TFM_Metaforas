@@ -70,3 +70,29 @@ Average recall across 5 folds: 0.9854590174682617
 Average F1-score across 5 folds: 0.7409051535508946
 Comment: Mucho 0 y 1
 
+Senses:
+Correlation:  0.10033316863907993
+Accuracy:  0.5951115834218916
+Classification report:
+               precision    recall  f1-score   support
+
+           0       0.62      0.06      0.12       391
+           1       0.59      0.97      0.74       550
+
+    accuracy                           0.60       941
+   macro avg       0.61      0.52      0.43       941
+weighted avg       0.61      0.60      0.48       941
+
+Categories:
+Correlation:  0.07692972048766311
+Accuracy:  0.59192348565356
+Classification report:
+               precision    recall  f1-score   support
+
+           0       0.71      0.03      0.06       391
+           1       0.59      0.99      0.74       550
+
+    accuracy                           0.59       941
+   macro avg       0.65      0.51      0.40       941
+weighted avg       0.64      0.59      0.46       941
+
