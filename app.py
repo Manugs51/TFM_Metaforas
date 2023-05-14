@@ -1,5 +1,6 @@
 """App base module"""
 
+from custom_parser.spacy_babel_parser import SpacyBabelParser
 from private_secrets import secrets
 from flask import request
 import flask
@@ -40,6 +41,8 @@ def parse_mode(args, key) -> Parser:
         return BabelParser(key)
     elif args['parser'] == 'spacy_parser':
         return SpacyParser(key)
+    elif args['parser'] == 'spacy_babel_parser':
+        return SpacyBabelParser(key)
 
     raise Exception('El parser elegido no existe')
 
