@@ -1,10 +1,15 @@
 import numpy as np
 import pandas as pd
 import ast
+from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import StratifiedKFold
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import GradientBoostingClassifier, RandomForestClassifier
+from sklearn import svm
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix, precision_recall_fscore_support
 import pickle
+from sklearn.naive_bayes import GaussianNB
+
+from sklearn.neighbors import KNeighborsClassifier
 
 def unpack_single_float_list(value):
     return ast.literal_eval(value)[0] if ast.literal_eval(value)[0] < 20 else 20
@@ -37,7 +42,48 @@ for train_index, test_index in skf.split(X, y):
     y_train, y_test = y.iloc[train_index], y.iloc[test_index]
 
     # Create and train the Random Forest classifier
-    clf = RandomForestClassifier(n_estimators=100, random_state=42)
+    #clf = RandomForestClassifier(n_estimators=1000, random_state=42)
+    '''
+    Average Accuracy: 60.58%
+    Average Precision: 61.95%
+    Average Recall: 60.58%
+    Average F-score: 52.25%
+    '''
+    #clf = svm.SVC(kernel='linear')
+    '''
+    Average Accuracy: 59.30%
+    Average Precision: 66.51%
+    Average Recall: 59.30%
+    Average F-score: 45.71%
+    '''
+    #clf = GradientBoostingClassifier(n_estimators=1000, learning_rate=1.0, max_depth=1, random_state=42)
+    '''
+    Average Accuracy: 59.73%
+    Average Precision: 59.14%
+    Average Recall: 59.73%
+    Average F-score: 51.75%
+    '''
+    #clf = KNeighborsClassifier(n_neighbors=5)
+    '''
+    Average Accuracy: 53.14%
+    Average Precision: 60.53%
+    Average Recall: 53.14%
+    Average F-score: 48.98%
+    '''
+    #clf = LogisticRegression(random_state=42)
+    '''
+    Average Accuracy: 59.30%
+    Average Precision: 62.28%
+    Average Recall: 59.30%
+    Average F-score: 46.38%
+    '''
+    clf = GaussianNB()
+    '''
+    Average Accuracy: 57.17%
+    Average Precision: 53.86%
+    Average Recall: 57.17%
+    Average F-score: 49.33%
+    '''
     clf.fit(X_train, y_train)
 
     # Make predictions on the test set
@@ -62,5 +108,5 @@ print(f"Average Recall: {avg_recall * 100:.2f}%")
 print(f"Average F-score: {avg_fscore * 100:.2f}%")
 
 # After training your classifier (e.g., clf)
-with open('classifier.pkl', 'wb') as file:
+with open('classifiersematch.pkl', 'wb') as file:
     pickle.dump(clf, file)
