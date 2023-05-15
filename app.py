@@ -9,8 +9,10 @@ from custom_parser.abstract_parser import Parser
 from custom_parser.spacy_parser import SpacyParser
 from semantic_source.abstract_semantic_source import SemanticSource
 from semantic_source.babel_categories import BabelCategories
+from semantic_source.babel_domains import BabelDomains
 from semantic_source.babel_hypernyms import BabelHypernyms
 from semantic_source.babel_lemmas_of_senses import BabelLemmasOfSenses
+from semantic_source.framenet_frames import FramenetFrames
 from semantic_source.sematch_jcn import SematchJcn
 from semantic_source.sematch_lch import SematchLch
 from semantic_source.sematch_li import SematchLi
@@ -51,8 +53,12 @@ def source_mode(args, key) -> SemanticSource:
 
     if not 'mode' in args:
         raise Exception('No se ha elegido un método de comprobación')
+    elif args['mode'] == 'framenet_frames':
+        return FramenetFrames(key)
     elif args['mode'] == 'babel_categories':
         return BabelCategories(key)
+    elif args['mode'] == 'babel_domains':
+        return BabelDomains(key)
     elif args['mode'] == 'babel_hypernyms':
         return BabelHypernyms(key)
     elif args['mode'] == 'babel_senses':
