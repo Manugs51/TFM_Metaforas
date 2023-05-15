@@ -75,11 +75,11 @@ class FramenetFrames(SemanticSource):
         for c in frame_id_set_of_suj:
             if c in frame_id_set_of_atr:
                 ret['isMetaphor'] = False
-                ret['relation'].append(c)
+                ret['relation'].append(fn.frame(c).ID)
         
         if ret['isMetaphor']:
             ret['reason'] = suj_word + ' y ' + atr_word + ' no tienen ningun frame en común: ' + \
-                str([lambda x: fn.frame(x), frame_id_set_of_suj]) + ' y ' + str([lambda x: fn.frame(x), frame_id_set_of_atr]) 
+                str([lambda x: fn.frame(x).ID, frame_id_set_of_suj]) + ' y ' + str([lambda x: fn.frame(x).ID, frame_id_set_of_atr]) 
         else:
             ret['reason'] = suj_word + ' y ' + atr_word + ' comparten los frames de:'
             for c in ret['relation']:
